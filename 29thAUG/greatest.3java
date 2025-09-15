@@ -1,0 +1,49 @@
+class test{
+
+		public static void main(String[] args)
+
+		{
+
+			int a=2,b=9,c=93;
+			if(a>b)
+			{
+				if(a>c)
+				{
+					system.out.printf("a is great");
+				}
+				else
+				{
+					System.out.printf("c is great");
+				}
+				
+			}
+
+			else
+			    {
+				if(b>a)
+				{
+					System.out.printf("b is great");
+				}
+
+				else
+				{
+					if(b>c)
+					{
+						Syste.out.printf("b is great");
+					}
+
+					else
+					{
+						System.out.printf("c is great");
+					}
+										
+				}		
+			    }
+			
+	
+							
+
+		}
+
+
+}
