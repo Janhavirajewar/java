@@ -62,7 +62,7 @@ product(int a,String b,double c,int d)
         return this.quantity;
     }
 
-double discount() //get from set
+double discount() 
 {
 	double p;
 	return p =this.price-(this.price * product.discount);
@@ -79,6 +79,7 @@ double sellingprice()
    static void setDiscount(double d) {
         discount = d;
     }
+    static double getDiscount() { return discount; }
 
 
 void display() {

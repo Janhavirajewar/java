@@ -62,7 +62,8 @@ static
         System.out.println("Account No : " + accno);
 	 System.out.println("Balance    : " + balance);
         System.out.println("Holder     : " + holder);
-        System.out.println("Interest   : " +this.ir);
+        System.out.println("Initial Interest rate: " + Acc.ir);
+
         System.out.println("--------------------------");
     }
 }
@@ -78,12 +79,11 @@ class TestAcc {
         a1.display();
         a2.display();
         a3.display();
-	System.out.println("intrest"+Acc.getintrest());
-	
+	System.out.println("Updated Interest rate: " + Acc.getintrest());
 
-	a1.setintrest(4.44); // also call with class name
-			
-	System.out.println("intrest"+Acc.getintrest());
+	Acc.setintrest(4.44);
+System.out.println("Updated Interest rate: " + Acc.getintrest());
+	
 
         // Update account details
         a1.setHolder("Ram");

@@ -49,9 +49,8 @@ class Bill {
     }
 
     void cal() {
-        System.out.println("bill = " + (this.unit * rateperunit));
-	 System.out.println("--------------------------");System.out.println(c);
-
+        System.out.println("bill = " + (this.unit * Bill.rateperunit));
+	 System.out.println("--------------------------");
 
     }
 
