@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;no&apos; in &apos;player&apos; to &apos;jerseyno&apos;&#x0D;&#x0A;- Original project: &apos;playermanagement&apos;&#x0D;&#x0A;- Original element: &apos;player.no&apos;&#x0D;&#x0A;- Renamed element: &apos;player.jerseyno&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;no&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{Test.java[player^no" name="jerseyno" references="true" setter="false" stamp="1758448194182" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,134 @@
+class Animal
+{
+	String name;
+	int age;
+	int weight;
+	Animal() {
+		
+		this.name="notf";
+		this.age=0;
+		this.weight=0;
+	}
+	Animal(String name, int age, int weigth) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.weight = weigth;
+	}
+	String getName() {
+		return name;
+	}
+	void setName(String name) {
+		this.name = name;
+	}
+	int getAge() {
+		return age;
+	}
+	void setAge(int age) {
+		this.age = age;
+	}
+	int getWeigth() {
+		return weight;
+	}
+	void setWeigth(int weigth) {
+		this.weight = weigth;
+	}
+	
+	void display()
+	{
+		System.out.println("name ="+this.name);
+		System.out.println("age ="+this.age);
+		System.out.println("weight ="+this.weight);
+	}
+	
+}// animal end here
+
+class Cat extends Animal
+{
+	String furColor;
+	String likesmilk;
+	Cat() {
+		
+		super();
+		this.furColor="none";
+		this.likesmilk="yes";
+	}
+	Cat(String name,int age,int weight, String furColor, String likesmilk) {
+		super(name,age,weight);
+		this.furColor = furColor;
+		this.likesmilk = likesmilk;
+	}
+	String getFurColor() {
+		return furColor;
+	}
+	void setFurColor(String furColor) {
+		this.furColor = furColor;
+	}
+	String getLikesmilk() {
+		return likesmilk;
+	}
+	void setLikesmilk(String likesmilk) {
+		this.likesmilk = likesmilk;
+	}
+	
+	void display()
+	{
+		super.display();
+		System.out.println("furcolor ="+this.furColor);
+		System.out.println("likesmilk ="+this.likesmilk);
+	}
+	
+}// cat ends here
+
+class Dog extends Animal
+{
+	String breed;
+	String color;
+	Dog() {
+		super();
+		this.breed="labrador";
+		this.color="brown";
+	}
+	Dog(String name,int age ,int weight,String breed, String color) {
+		super(name,age,weight);
+		this.breed = breed;
+		this.color = color;
+	}
+	String getBreed() {
+		return breed;
+	}
+	void setBreed(String breed) {
+		this.breed = breed;
+	}
+	String getColor() {
+		return color;
+	}
+	void setColor(String color) {
+		this.color = color;
+	}
+	void display()
+	{
+		super.display();
+		System.out.println("breed"+this.breed);
+		System.out.println("color"+this.color);
+	}
+	
+	
+}
+
+public class testAnimal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Animal a1=new Animal("chini",1,2);
+		a1.display();
+		System.out.println();
+		Cat c1=new Cat("bebooo",2,1,"red","yes");
+		c1.display();
+		System.out.println();
+		Dog d1=new Dog("coco",1,2,"germanshefard","golden");
+		d1.display();
+}
+
+}

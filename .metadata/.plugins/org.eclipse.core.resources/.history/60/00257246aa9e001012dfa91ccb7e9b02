@@ -1,0 +1,56 @@
+
+class VoterAgeException extends Exception
+{
+	 public String toString()
+	 {
+		 return "Invalid Input !!!!!!!!!" ;
+	 }
+}
+
+class Voter
+{
+	int age;
+
+	Voter(int age) {
+		
+		this.age = age;
+	}
+	
+	public void Validate() throws VoterAgeException
+	{
+		if(this.age<18)
+		{
+			throw new VoterAgeException();
+			
+		}
+		else
+		{
+			System.out.println("yes you can vote");
+		}
+		
+	}
+	
+}// voter ends here
+
+
+
+public class testage {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Voter v1= new Voter(4);
+		try
+		{
+			v1.Validate();
+			
+		}
+		catch(VoterAgeException ve)
+		{
+			System.out.println(ve);
+			System.out.println("inside main");
+		}
+	}
+
+}
+

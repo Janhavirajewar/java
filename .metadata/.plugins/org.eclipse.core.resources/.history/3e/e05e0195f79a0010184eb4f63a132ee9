@@ -1,0 +1,43 @@
+package p2;
+
+import p1.Employe;
+
+public class Admin extends Employe {
+
+	double allowance;
+
+			Admin() {
+		super();
+		System.out.println("hr default");
+		this.allowance=0;
+				
+	}
+
+	Admin(int id,String name,double salary,double allowance) {
+		super(id,name,salary);
+		System.out.println("para hr");
+		this.allowance = allowance;
+	}
+
+	double getCommission() {
+		return allowance;
+	}
+
+	void setCommission(double commission) {
+		this.allowance = commission;
+	}
+
+	
+	public void display()
+	{
+		super.display();
+		System.out.println("commission ="+this.allowance);
+	}
+	
+	public double calsal()
+	{
+		return this.getSalary()+this.getCommission();
+				
+	}
+	
+}

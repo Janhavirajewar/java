@@ -1,0 +1,31 @@
+package p3;
+
+import p1.Employe;
+import p2.Admin;
+import p2.Hr;
+import p2.Salesmanager;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Employe e1;
+		e1=new Hr(101,"Sakshi",30000,5000);
+		e1.display();
+		System.out.println("calculate salary "+e1.calsal());
+		System.out.println();
+		
+		e1=new Admin(102,"Sneha",40000,6000);
+		e1.display();
+		System.out.println("calculate salary "+e1.calsal());
+		System.out.println();
+		
+		e1=new Salesmanager(103,"Ruchita",35000,7000,10);
+		e1.display();
+		System.out.println("calculate salary "+e1.calsal());
+		System.out.println();
+
+	}
+
+}

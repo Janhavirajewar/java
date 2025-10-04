@@ -1,0 +1,13 @@
+package p2;
+
+import p1.product;
+
+public class test {
+
+	public static void main(String[] args)
+	{
+		product p=new animal();
+		p.sell();
+	}
+	
+}

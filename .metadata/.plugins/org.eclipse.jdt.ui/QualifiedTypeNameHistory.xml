@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="jdk.internal.org.jline.terminal.TerminalBuilder.SystemOutput"/>
+    <fullyQualifiedTypeName name="Emplpoye"/>
+    <fullyQualifiedTypeName name="Employe"/>
+    <fullyQualifiedTypeName name="player"/>
+    <fullyQualifiedTypeName name="salesManager"/>
+    <fullyQualifiedTypeName name="areaSalesManager"/>
+    <fullyQualifiedTypeName name="Vehicle"/>
+    <fullyQualifiedTypeName name="ElectricCar"/>
+    <fullyQualifiedTypeName name="student"/>
+    <fullyQualifiedTypeName name="GraduateStudent"/>
+    <fullyQualifiedTypeName name="ploymorphism.salesManager"/>
+    <fullyQualifiedTypeName name="Shape"/>
+    <fullyQualifiedTypeName name="Triangle"/>
+    <fullyQualifiedTypeName name="Rectangle"/>
+    <fullyQualifiedTypeName name="CreditCard"/>
+    <fullyQualifiedTypeName name="payment"/>
+    <fullyQualifiedTypeName name="Upi"/>
+    <fullyQualifiedTypeName name="Appliance"/>
+    <fullyQualifiedTypeName name="person"/>
+    <fullyQualifiedTypeName name="cr"/>
+    <fullyQualifiedTypeName name="clubpresident"/>
+    <fullyQualifiedTypeName name="Device"/>
+    <fullyQualifiedTypeName name="computer"/>
+    <fullyQualifiedTypeName name="java.net.MulticastSocket"/>
+    <fullyQualifiedTypeName name="sun.security.pkcs11.wrapper.CK_ECDH1_DERIVE_PARAMS"/>
+    <fullyQualifiedTypeName name="Animal"/>
+    <fullyQualifiedTypeName name="bird"/>
+    <fullyQualifiedTypeName name="parrot"/>
+    <fullyQualifiedTypeName name="SalesHead"/>
+    <fullyQualifiedTypeName name="Recruiter"/>
+    <fullyQualifiedTypeName name="p1.Employe"/>
+    <fullyQualifiedTypeName name="p1.poduct"/>
+    <fullyQualifiedTypeName name="p1.product"/>
+    <fullyQualifiedTypeName name="p1.traveler"/>
+    <fullyQualifiedTypeName name="jdk.internal.misc.FileSystemOption"/>
+    <fullyQualifiedTypeName name="VoterAgeException"/>
+    <fullyQualifiedTypeName name="GradeException"/>
+</qualifiedTypeNameHistroy>

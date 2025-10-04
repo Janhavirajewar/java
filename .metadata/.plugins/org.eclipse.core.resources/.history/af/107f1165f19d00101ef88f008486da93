@@ -1,0 +1,31 @@
+
+public class demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int a=10;
+		int b=0;
+		int c;
+		
+		try
+		{
+		if(b==0)
+		{
+			throw new ArithmaticException(); 
+		}
+		else
+		{	
+		
+		c=a/b;
+		System.out.println("result is : "+c);
+	
+		}
+		}
+		catch(ArithmaticException ae)
+		{
+			System.out.println("enter non 0 2nd value");
+		}
+	}
+
+}

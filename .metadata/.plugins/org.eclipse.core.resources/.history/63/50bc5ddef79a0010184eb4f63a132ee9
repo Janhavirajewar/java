@@ -1,0 +1,27 @@
+package p2;
+
+import p1.Employe;
+
+public class Salemanager {
+	
+	double target;
+	double incentive;
+	
+	public Salemanager() {
+		// TODO Auto-generated constructor stub
+		this.incentive=0;
+		this.target=0;
+	}
+
+	public Salemanager(int id, String name, double salary,double incentive, int target) {
+		super( id,name,salary);
+		this.incentive = incentive;
+		this.target = target;
+	}
+
+	public double getIncentive() {
+		return incentive;
+	}
+
+
+}

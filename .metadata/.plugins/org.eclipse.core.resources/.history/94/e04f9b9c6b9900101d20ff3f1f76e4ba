@@ -1,0 +1,388 @@
+import java.util.Scanner;
+
+class player
+{
+	int jerseyno;
+	int runs;
+	int wicket;
+	int matchesPlayed;
+	String name;
+	
+	player() {
+		
+		this.jerseyno = 0;
+		this.runs = 0;
+		this.wicket = 0;
+		this.matchesPlayed = 0;
+		this.name = "notf";
+	}
+	player(int no, int runs, int wicket, int matchesPlayed, String name) 
+	
+	{
+		
+		this.jerseyno = no;
+		this.runs = runs;
+		this.wicket = wicket;
+		this.matchesPlayed = matchesPlayed;
+		this.name = name;
+	}
+	
+	
+	int getNo() {
+		return jerseyno;
+	}
+	void setNo(int no) {
+		this.jerseyno = no;
+	}
+	int getRuns() {
+		return runs;
+	}
+	void setRuns(int runs) {
+		this.runs = runs;
+	}
+	int getWicket() {
+		return wicket;
+	}
+	void setWicket(int wicket) {
+		this.wicket = wicket;
+	}
+	int getMatchesPlayed() {
+		return matchesPlayed;
+	}
+	void setMatchesPlayed(int matchesPlayed) {
+		this.matchesPlayed = matchesPlayed;
+	}
+	String getName() {
+		return name;
+	}
+	void setName(String name) {
+		this.name = name;
+	}
+	
+	void display()
+	{
+		System.out.println("JerseyNo ="+this.jerseyno);
+		System.out.println("Run ="+this.runs);
+		System.out.println("Wicket ="+this.wicket);
+		System.out.println("Matches ="+this.matchesPlayed);
+		System.out.println("Name ="+this.name);
+	}
+	
+}
+
+class Team
+{
+	
+	int count=0;
+	Scanner sc=new Scanner(System.in);
+	player[] prr=new player [100];
+	
+	Team()
+	{
+		hardcoded();
+	}
+	
+	void add()
+	{
+			for (int i1 = 0; i1 <count; i1++)
+			{
+	            System.out.println("Enter Jersyno,runs,Wickets,MatchesPlayed,Name of Player "+(i1+1) );
+	            int a = sc.nextInt();
+	            int b = sc.nextInt();
+	            int c = sc.nextInt();
+	            int d = sc.nextInt();
+	            sc.nextLine();
+	            String e = sc.nextLine();
+	            prr[i1] = new player(a, b, c, d, e);
+	            count++;
+			
+			}
+	}
+	
+	int search()
+	{
+		int jno;
+		System.out.println("enter jersey no youhave to search");
+		jno=sc.nextInt();
+		
+		for(int i=0;i<count;i++)
+		{
+			if(prr[i].jerseyno==jno)
+			{
+				return i;
+			}
+		}
+		
+		return -1;				
+	}
+	
+	void update()
+	{
+		
+		System.out.println("enter jersey no you have to update");
+		int jno=sc.nextInt();
+		sc.nextLine();
+		boolean f=false;
+		
+		for(int i=0;i<count;i++)
+		{
+			if(prr[i].jerseyno==jno)
+			{
+				System.out.println("Enter the runs");
+				int runs=sc.nextInt();
+				 System.out.println("Enter the wickets");
+				 int wickets=sc.nextInt();
+				 
+				 System.out.println("enter matches played");
+				 int matchesplayed=sc.nextInt();
+				 
+				 System.out.println("enter name");
+				 String name=sc.nextLine();
+				 
+				 prr[i].setRuns(runs);
+		            prr[i].setWicket(wickets);
+		            prr[i].setMatchesPlayed(matchesplayed);
+		            prr[i].setName(name);
+
+				 
+				  System.out.println(" Player updated successfully!");
+				 f=true;
+				 break;
+			}
+		}
+		
+		if(f==false)
+		{
+			System.out.println(" Player with Jersey No \" + jno + \" not found.");
+		}
+		
+	}
+	
+	void remove()
+	{
+		
+		int index=search();
+		System.out.println("now remove it");
+		System.out.println(index);
+		if(index!=-1)
+		{
+			for(int i=index;i<count-1;i++)
+			{
+				prr[i]=prr[i+1];
+			}
+			count--;
+			System.out.println("remove successfully");
+		}
+		else 
+		{
+	        System.out.println("Player not found. Cannot remove.");
+	    }
+	
+	}
+	
+	
+	void sortbyjerseyno() {
+	    for (int i = 0; i < count - 1; i++) {
+	        for (int j = 0; j < count - i - 1; j++) {
+	            if (prr[j].jerseyno > prr[j + 1].jerseyno) {
+	                // swap
+	                player temp = prr[j];
+	                prr[j] = prr[j + 1];
+	                prr[j + 1] = temp;
+	            }
+	        }
+	    }
+	    System.out.println("Players sorted by Jersey Number.");
+	}
+
+	
+	void sortbyruns() {
+	    for (int i = 0; i < count - 1; i++) {
+	        for (int j = 0; j < count - i - 1; j++) {
+	            if (prr[j].runs > prr[j + 1].runs) {
+	                // swap
+	                player temp = prr[j];
+	                prr[j] = prr[j + 1];
+	                prr[j + 1] = temp;
+	            }
+	        }
+	    }
+	    System.out.println("Players sorted by Runs.");
+	}
+	
+	
+	void sortbywickets() {
+	    for (int i = 0; i < count - 1; i++) {
+	        for (int j = 0; j < count - i - 1; j++) {
+	            if (prr[j].wicket > prr[j + 1].wicket) {
+	                // swap
+	                player temp = prr[j];
+	                prr[j] = prr[j + 1];
+	                prr[j + 1] = temp;
+	            }
+	        }
+	    }
+	    System.out.println("Players sorted by Wickets.");
+	}
+	
+	
+	void showTopThreeByRuns()
+	{
+		sortbyruns();
+		System.out.println("top three players by Runs:");
+		
+		for(int i=count-1;i>=count-3 && i>=0;i--)
+		{
+			System.out.println("runs ="+prr[i].runs);
+			System.out.println("jersey no ="+prr[i].jerseyno);
+			System.out.println("wickets ="+prr[i].wicket);
+			System.out.println("matchesplayed ="+prr[i].matchesPlayed);
+			System.out.println("name ="+prr[i].name);
+		}
+	}
+	
+	void showTopThreeByWickets()
+	{
+		sortbywickets();
+		System.out.println("top three players by Wickets:");
+		
+		for(int i=count-1;i>=count-3 && i>=0;i--)
+		{
+			System.out.println("runs ="+prr[i].runs);
+			System.out.println("jersey no ="+prr[i].jerseyno);
+			System.out.println("wickets ="+prr[i].wicket);
+			System.out.println("matchesplayed ="+prr[i].matchesPlayed);
+			System.out.println("name ="+prr[i].name);
+		}
+	}
+
+	
+
+
+	void hardcoded()
+	{
+		
+		    System.out.println("hardcoded called");
+		    prr[0] = new player(7888, 1200, 12, 100, "Virat");
+		    prr[1] = new player(188, 1400, 10, 90, "Dhoni");
+		    prr[2] = new player(45, 900, 5, 80, "Rohit");
+		    prr[3] = new player(46,9696,32,45,"ronit");
+		    count=4;
+      
+	}
+	
+	void displayplayer()
+	{
+		for(int i=0;i<count;i++)
+		{
+			prr[i].display();
+		}
+	}
+	
+	
+	int getCount() {
+	    return count;
+	}
+	
+}
+
+ class Test 
+ 
+ {
+
+	public static void main(String[] args) 
+	
+	{
+		
+		Team t1=new Team();
+//		t1.add();
+		
+		t1.displayplayer();
+		System.out.println();
+		
+		t1.update();
+		t1.displayplayer();
+		System.out.println();
+		
+		int i=t1.search();
+		if(i!=-1)
+		{
+			System.out.println("player found at index"+i);
+			t1.prr[i].display();
+		}
+		
+		 else 
+		 {
+			    System.out.println("Player not found.");
+		 }
+			
+				System.out.println();
+		
+
+				t1.sortbyjerseyno();
+				t1.displayplayer();
+				System.out.println();
+				
+				t1.sortbyruns();
+				t1.displayplayer();
+				System.out.println();
+				
+				
+				t1.sortbywickets();
+				t1.displayplayer();
+				System.out.println();
+				
+				t1.showTopThreeByRuns();
+				System.out.println();
+				
+				
+				t1.showTopThreeByWickets();
+				System.out.println();
+				
+				t1.remove();
+				t1.displayplayer();
+				System.out.println();
+		
+				
+		
+		
+		System.out.println("Number of players countttt =: " + t1.getCount());
+		
+
+		
+//		l1 ---> Library object
+//        |
+//        |-- bookArr ---> [Book0, Book1, Book2]
+//                       Book0: Atomic Habits
+//                       Book1: Rich Dad Poor Dad
+//                       Book2: Harry Potter
+		
+		// TODO Auto-generated method stub
+		//Scanner sc=new Scanner(System.in);
+//		player p1 = new player(101,100,12,121,"virat");
+//		p1.display();
+		
+//		player[] prr=new player [3];
+		
+//		
+//		for(int i=0;i<prr.length;i++)
+//		{
+//			System.out.println("Enter Jersyno,runs,Wickets,Matchespplayed,Name of Student"+(i+1));
+//			int a=sc.nextInt();
+//			int b=sc.nextInt();
+//			int c=sc.nextInt();
+//			int d=sc.nextInt();
+//			sc.nextLine(); 
+//			String e=sc.nextLine();
+//			prr[i]=new player(a,b,c,d,e);
+//		
+//		}
+//		
+//		for(int i=0;i<prr.length;i++)
+//		{
+//			System.out.println("Information of player"+(i+1)+ "is :");
+//			prr[i].display();
+//			
+//		}	
+	}
+}

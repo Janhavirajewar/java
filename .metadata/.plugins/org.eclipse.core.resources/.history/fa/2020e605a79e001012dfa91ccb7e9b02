@@ -1,0 +1,23 @@
+import jdk.internal.misc.FileSystemOption;
+
+class VoterAgeException extends Exception()
+{
+	 public String toString()
+	 {
+		 return Invalid Input !!!!!!!!!;
+	 }
+}
+
+class 
+
+
+
+class testage {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

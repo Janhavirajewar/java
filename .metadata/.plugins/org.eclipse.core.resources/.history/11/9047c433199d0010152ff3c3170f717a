@@ -1,0 +1,23 @@
+package p2;
+
+public class car extends vehicle {
+
+	@Override
+	public void sell() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void travel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

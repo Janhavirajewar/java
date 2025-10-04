@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;personteacher&apos; to &apos;teacherr&apos;&#x0D;&#x0A;- Original project: &apos;19thsep_multilevelInheritance&apos;&#x0D;&#x0A;- Original element: &apos;personteacher&apos;&#x0D;&#x0A;- Renamed element: &apos;teacherr&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;personteacher&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{teacher.java[personteacher" matchStrategy="1" name="teacherr" qualified="false" references="true" similarDeclarations="false" stamp="1758381890809" textual="false" version="1.0"/>
+</session>

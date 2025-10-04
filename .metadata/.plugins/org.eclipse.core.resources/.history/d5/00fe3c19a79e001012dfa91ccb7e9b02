@@ -1,0 +1,22 @@
+
+class VoterAgeException extends Exception()
+{
+	 public String toString()
+	 {
+		 return Invalid Input !!!!!!!!!;
+	 }
+}
+
+class 
+
+
+
+public class testage {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

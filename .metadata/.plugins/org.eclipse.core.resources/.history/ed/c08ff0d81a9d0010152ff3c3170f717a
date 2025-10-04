@@ -1,0 +1,19 @@
+package p2;
+
+public class horse extends animal {
+
+	@Override
+	public void sell() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}

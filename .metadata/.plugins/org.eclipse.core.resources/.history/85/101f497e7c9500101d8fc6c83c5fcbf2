@@ -1,0 +1,92 @@
+class Animal
+{
+	String name;
+	int age;
+	int weigth;
+	Animal() {
+		
+		this.name="notf";
+		this.age=0;
+		this.weigth=0;
+	}
+	Animal(String name, int age, int weigth) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.weigth = weigth;
+	}
+	String getName() {
+		return name;
+	}
+	void setName(String name) {
+		this.name = name;
+	}
+	int getAge() {
+		return age;
+	}
+	void setAge(int age) {
+		this.age = age;
+	}
+	int getWeigth() {
+		return weigth;
+	}
+	void setWeigth(int weigth) {
+		this.weigth = weigth;
+	}
+	
+	void display()
+	{
+		System.out.println("name"+this.name);
+		System.out.println("age"+this.age);
+		System.out.println("weight"+this.weigth);
+	}
+	
+	class Cat extends Animal
+	{
+		String furColor;
+		String likesmilk;
+		Cat() {
+			super();
+			this.furColor="none";
+			this.likesmilk="yes";
+		}
+		Cat(String name,int age,int weight, String furColor, String likesmilk) {
+			super(name,age,weight);
+			this.furColor = furColor;
+			this.likesmilk = likesmilk;
+		}
+		String getFurColor() {
+			return furColor;
+		}
+		void setFurColor(String furColor) {
+			this.furColor = furColor;
+		}
+		String getLikesmilk() {
+			return likesmilk;
+		}
+		void setLikesmilk(String likesmilk) {
+			this.likesmilk = likesmilk;
+		}
+		
+		void display()
+		{
+			super.display();
+			System.out.println("furcolor"+this.furColor);
+			System.out.println("likesmilk"+this.likesmilk);
+		}
+		
+	}
+}
+public class testAnimal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Animal a1=new Animal();
+		a1.display();
+		
+		Cat c1=new Cat();
+		c1.display();
+}
+
+}

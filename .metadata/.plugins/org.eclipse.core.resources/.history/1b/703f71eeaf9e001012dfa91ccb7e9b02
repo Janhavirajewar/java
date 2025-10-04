@@ -1,0 +1,30 @@
+
+class GradeException extends Exception
+{
+	
+}
+
+class Grade{
+	int marks;
+
+	Grade(int marks) {
+		
+		this.marks = marks;
+	}
+	
+	if(this.marks<0 || this.marks>100)
+	{
+		throws new GradeException();
+	}
+	
+}
+
+
+public class testgrade {
+
+	public static void main(String[] args)
+	{
+		
+	}
+	
+}

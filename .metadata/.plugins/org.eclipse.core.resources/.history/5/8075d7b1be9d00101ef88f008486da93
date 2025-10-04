@@ -1,0 +1,36 @@
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    void meow() {
+        System.out.println("Cat meows");
+    }
+}
+
+ class Test {
+    public static void main(String[] args) {
+        Animal ref;   // ✅ Only one super reference
+
+        ref = new Dog();   // Upcasting Dog → Animal
+        ref.sound();
+       if(ref instanceof Dog)
+       {
+            Dog d = (Dog) ref;   // Downcasting
+            d.bark();
+       }
+//        ref = new Cat();   // Upcasting Cat → Animal
+      
+            Cat c = (Cat) ref;   // Downcasting
+            c.meow();
+        
+    }
+}

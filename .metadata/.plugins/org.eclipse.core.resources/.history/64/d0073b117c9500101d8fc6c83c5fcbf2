@@ -1,0 +1,51 @@
+class Animal
+{
+	String name;
+	int age;
+	int weigth;
+	Animal() {
+		
+		this.name="notf";
+		this.age=0;
+		this.weigth=0;
+	}
+	Animal(String name, int age, int weigth) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.weigth = weigth;
+	}
+	String getName() {
+		return name;
+	}
+	void setName(String name) {
+		this.name = name;
+	}
+	int getAge() {
+		return age;
+	}
+	void setAge(int age) {
+		this.age = age;
+	}
+	int getWeigth() {
+		return weigth;
+	}
+	void setWeigth(int weigth) {
+		this.weigth = weigth;
+	}
+	
+	void display()
+	{
+		syso
+	}
+}
+public class testAnimal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Animal a1=new Animal();
+		a1.display();
+}
+
+}

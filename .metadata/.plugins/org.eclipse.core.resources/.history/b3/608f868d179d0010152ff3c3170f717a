@@ -1,0 +1,7 @@
+package p2;
+import p1.poduct;
+
+public class animal implements product
+{
+
+}

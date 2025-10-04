@@ -1,0 +1,36 @@
+package p3;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		  p1.Employe[] err = new p1.Employe[3];
+	        err[0] = new Hr(101, "Monu", 80000, 5000);
+	        err[1] = new Admin(102, "Neha", 40000, 6000);
+	        err[2] = new Salesmanager(103, "Rahul", 35000, 7000, 10);
+
+	        for (int i=0;i<err.length;i++) {
+	            err[i].display();
+	            System.out.println("Calculated Salary: " + err[i].calsal());
+	            System.out.println("----------------------------");
+	        }
+//		Employe e1;
+//		e1=new Hr(101,"Monu",80000,5000);
+//		e1.display();
+//		System.out.println("calculate salary "+e1.calsal());
+//		System.out.println();
+//		
+//		e1=new Admin(102,"Neha",40000,6000);
+//		e1.display();
+//		System.out.println("calculate salary "+e1.calsal());
+//		System.out.println();
+//		
+//		e1=new Salesmanager(103,"Rahul",35000,7000,10);
+//		e1.display();
+//		System.out.println("calculate salary "+e1.calsal());
+//		System.out.println();
+
+	}
+
+}

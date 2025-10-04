@@ -1,0 +1,57 @@
+package p1;
+
+public abstract class Employe {
+	
+	int id;
+	String name;
+	double salary;
+
+	public Employe() {
+		System.out.println("default employe");
+		this.id=0;
+		this.name="default name";
+		this.salary=0;
+		
+	}
+
+	Employe(int id, String name, double salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+
+	int getId() {
+		return id;
+	}
+
+	void setId(int id) {
+		this.id = id;
+	}
+
+	String getName() {
+		return name;
+	}
+
+	void setName(String name) {
+		this.name = name;
+	}
+
+	double getSalary() {
+		return salary;
+	}
+
+	void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	void display()
+	{
+		System.out.println("id ="+this.id);
+		System.out.println("name ="+this.name);
+		System.out.println("salary ="+this.salary);
+	}
+	
+	abstract double calsal();
+
+}// employe ends here

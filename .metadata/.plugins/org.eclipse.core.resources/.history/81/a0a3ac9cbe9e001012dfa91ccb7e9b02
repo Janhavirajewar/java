@@ -1,0 +1,70 @@
+
+class GradeException extends Exception
+{
+	public String toString()
+	{
+		return "invalid" ;
+	}
+	
+}
+
+class Grade{
+	int marks;
+
+	Grade(int marks) {
+		
+		this.marks = marks;
+	}
+	
+	void check()
+	{
+		
+	try
+	{
+	if(this.marks<0 || this.marks>100)
+	{
+		throw new GradeException();
+	}
+	else
+	{
+		if(this.marks>=35)
+			System.out.println("pass");
+		
+		else if(this.marks>=75)
+			System.out.println("c");
+		
+		else if(this.marks>=85)
+		{
+			System.out.println("b");
+		}
+		
+		else if(this.marks>=95)
+		{
+			System.out.println("a");
+		}
+		
+		else
+			System.out.println("fail");
+	}
+	}
+	catch(GradeException ge)
+	{
+		System.out.println(ge);
+		ge.PrintStackTrace();
+	}
+	}
+}
+
+
+public class testgrade {
+
+	public static void main(String[] args)
+	{
+		Grade g1=new Grade(122);
+		
+		g1.check();
+				
+		
+	}
+	
+}
