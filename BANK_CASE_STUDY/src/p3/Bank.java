@@ -30,7 +30,12 @@ public class Bank {
     }
 
     // ✅ Display all accounts
-    public void displayAll() {
+    public void displayAll()
+    {
+    	if(count==0)
+    	{
+    		System.out.println(" \n no account is add pls add an account");
+    	}
         System.out.println("\n--- All Accounts ---");
         for (int i = 0; i < count; i++) {
             accounts[i].displayAccount();
@@ -58,11 +63,16 @@ public class Bank {
     }
 
     // ✅ Deposit
-    public void deposit(String accNo, double amount) {
+    public void deposit(String accNo , double amount) {
         Account acc = searchByAccNo(accNo);
-        if (acc != null) {
+        
+        if (acc != null)
+        {
             acc.deposit(amount);
-        } else {
+        } 
+        
+        else 
+        {
             System.out.println("Account not found!");
         }
     }
@@ -86,11 +96,27 @@ public class Bank {
         {
             acc.setBalance(newBalance);
             System.out.println("Account balance updated successfully.");
-        } else 
+        } 
+        else 
         {
             System.out.println("Account not found!");
         }
     
     
     }
+    
+    public void generateDailyReport() {
+        if (count == 0) {
+            System.out.println("No accounts to report.");
+            return;
+        }
+
+        System.out.println("\n===== DAILY REPORT =====");
+        for (int i = 0; i < count; i++) {
+            accounts[i].displayAccount();
+            accounts[i].displayAllTransactions();
+            System.out.println();
+        }
+    }
+    
 }

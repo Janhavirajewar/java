@@ -13,8 +13,8 @@ public class TestBank
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Bank bank = new Bank(); // Preloaded with some demo accounts
-
+        Bank bank  = new Bank(); // Preloaded with some demo accounts
+        int exit;
         int choice;
         System.out.println("\n......WELCOME BANK MANAGEMENT SYSTEM.......\n");
         do {
@@ -26,11 +26,11 @@ public class TestBank
             System.out.println("5. Deposit");
             System.out.println("6. Withdraw");
             System.out.println("7. Update Account Balance");
-            System.out.println("8. Exit");
-            System.out.println(" 9.show transaactions");
+            System.out.println("8. dailyreport");
+            System.out.println("9. Exit \n");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
-            
+           
             sc.nextLine(); // clear buffer
           
             switch (choice) {
@@ -40,19 +40,19 @@ public class TestBank
                     System.out.println("1. Saving");
                     System.out.println("2. Current");
                     System.out.println("3. Salary");
-                    System.out.println("4. Loan");
+                    System.out.println("4. Loan \n");
                     System.out.print("Enter type: ");
                     
                     int type = sc.nextInt();
                     sc.nextLine(); // clear buffer
 
-                    System.out.print("Enter Account Number: ");
+                    System.out.print("\n Enter Account Number: ");
                     String accNo = sc.nextLine();
 
-                    System.out.print("Enter Holder Name: ");
+                    System.out.print("\n Enter Holder Name: ");
                     String name = sc.nextLine();
 
-                    System.out.print("Enter Opening Balance: ");
+                    System.out.print("\n Enter Opening Balance: ");
                     double bal = sc.nextDouble();
                     sc.nextLine();
 
@@ -60,15 +60,15 @@ public class TestBank
                     switch (type)
                     {
                         case 1:
-                            System.out.print("Enter Interest Rate: ");
+                            System.out.print("\n Enter Interest Rate: ");
                             double rate = sc.nextDouble();
-                            System.out.print("Enter Minimum Balance: ");
+                            System.out.print("\n Enter Minimum Balance: ");
                             double minBal = sc.nextDouble();
                              bank.addAccount(new SavingAcc(accNo, name, bal, "IFSC100", rate, minBal));
                             break;
 
                         case 2:
-                            System.out.print("Enter Overdraft Limit: ");
+                            System.out.print("\n Enter Overdraft Limit: ");
                             double od = sc.nextDouble();
                             bank.addAccount(new Current_Acc(accNo, name, bal, "IFSC200", od));
                             break;
@@ -78,7 +78,7 @@ public class TestBank
                             break;
 
                         case 4:
-                            System.out.print("Enter Loan Amount: ");
+                            System.out.print("\n Enter Loan Amount: ");
                             double loanAmt = sc.nextDouble();
                             System.out.print("Enter Interest Rate: ");
                             double loanRate = sc.nextDouble();
@@ -95,7 +95,7 @@ public class TestBank
                     break;
 
                 case 3:
-                    System.out.print("Enter Account Number to Search: ");
+                    System.out.print("\n Enter Account Number to Search: ");
                     String sAcc = sc.nextLine();
                     Account foundAcc = bank.searchByAccNo(sAcc);
                     if (foundAcc != null)
@@ -105,7 +105,7 @@ public class TestBank
                     break;
 
                 case 4:
-                    System.out.print("Enter Account Holder Name to Search: ");
+                    System.out.print("\n Enter Account Holder Name to Search: ");
                     String sName = sc.nextLine();
                     Account foundName = bank.searchByName(sName);
                     if (foundName != null)
@@ -115,51 +115,50 @@ public class TestBank
                     break;
 
                 case 5:
-                    System.out.print("Enter Account Number: ");
+                    System.out.print("\n Enter Account Number: ");
                     String depNo = sc.nextLine();
-                    System.out.print("Enter Deposit Amount: ");
+                    System.out.print("\n Enter Deposit Amount: ");
                     double depAmt = sc.nextDouble();
                     bank.deposit(depNo, depAmt);
                     break;
 
                 case 6:
-                    System.out.print("Enter Account Number: ");
+                    System.out.print("\n Enter Account Number: ");
                     String wNo = sc.nextLine();
-                    System.out.print("Enter Withdrawal Amount: ");
+                    System.out.print("\n Enter Withdrawal Amount: ");
                     double wAmt = sc.nextDouble();
                     sc.nextLine();
                     bank.withdraw(wNo, wAmt);
                     break;
 
                 case 7:
-                    System.out.print("Enter Account Number to Update: ");
+                    System.out.print("\n Enter Account Number to Update: ");
                     String upNo = sc.nextLine();
-                    System.out.print("Enter New Balance: ");
+                    System.out.print("\n Enter New Balance: ");
                     double newBal = sc.nextDouble();
                     bank.updateAccount(upNo, newBal);
                     break;
 
                 case 8:
+                    bank.generateDailyReport();
+                    break;
+                    
+                case 9:
                     System.out.println("Exiting... Thank you!");
                     break;
 
-                case 9:
-                    System.out.print("Enter Account Number to View Transactions: ");
-                    String tAcc = sc.nextLine();
-                    Account a = bank.searchByAccNo(tAcc);
-                    if (a != null)
-                        a.showTransactions();
-                    else
-                        System.out.println("Account not found!");
-                    break;
-                    
-                    
+                
                 default:
                     System.out.println("Invalid choice! Try again.");
+                  
             }
+            
+            System.out.println("\n Do you want to continue press 1 to yes 0 to no");
+            exit=sc.nextInt();
 
-        } while (choice != 8);
-
+        } while (exit==1);
+        if(exit!=1)
+        System.out.println("\n program is closed .. !! ");
         sc.close();
     }
 }

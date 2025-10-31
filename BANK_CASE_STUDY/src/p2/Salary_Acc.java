@@ -10,6 +10,7 @@ public class Salary_Acc extends Account{
 	 public Salary_Acc(String accNumber, String holderName, double balance,String ifsc) {
 	        super(accNumber, holderName, balance,ifsc);
 	        this.last_transactiondate = null;
+	        addTransaction(new Transaction(holder_name, " Salary Account", balance));
 	   
 	    }
 
@@ -24,6 +25,7 @@ public class Salary_Acc extends Account{
 	 {
 	        if (balance - amount < 0)
 	        {
+	        	 addTransaction(new Transaction(holder_name, "Withdraw (Salary)", amount));
 	            System.out.println("Cannot withdraw — Salary Account cannot go negative.");
 	        } 
 	        

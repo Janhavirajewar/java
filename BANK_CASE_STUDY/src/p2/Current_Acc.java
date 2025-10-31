@@ -15,6 +15,7 @@ public class Current_Acc extends Account {
 	{
 		 super(acc_no, holder_name, balance, ifsc);
 		this.overdraftlimit = overdraftlimit;
+		 addTransaction(new Transaction(holder_name, "Current Account", balance));
 	}
 
 	double getOverdraftlimit() {
@@ -33,7 +34,7 @@ public class Current_Acc extends Account {
 		        if (balance + overdraftlimit >= amount)
 		        {
 		            balance=balance-amount;
-		            
+		            addTransaction(new Transaction(holder_name, "Withdraw (Current)", amount));
 		            System.out.println("₹" + amount + " withdrawn using overdraft.");
 		            
 		        } else {

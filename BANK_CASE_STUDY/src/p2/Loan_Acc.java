@@ -1,6 +1,7 @@
 package p2;
 
 import p1.Account;
+import p2.Transaction;   // ✅ make sure this import is present
 
 public class Loan_Acc extends Account {
 
@@ -10,66 +11,52 @@ public class Loan_Acc extends Account {
     private boolean isApproved;     // Loan approval status
     private int paymentsCount;      // Number of payments made
 
-    public  double interestRate; // Static interest rate for all loans
+    public double interestRate; // Static interest rate for all loans
 
     // Constructor
-    public Loan_Acc(String acc_no, String holder_name, double balance, String ifsc,double loanamt,double loanrate) {
+    public Loan_Acc(String acc_no, String holder_name, double balance, String ifsc, double loanamt, double loanrate) {
         super(acc_no, holder_name, balance, ifsc);
         this.loanAmount = loanamt;  // set loan amount
         this.interestRate = loanrate; // set interest rate
         this.isApproved = true;
         this.paymentsCount = 0;
+
+        // ✅ record loan account creation
+        addTransaction(new Transaction(acc_no, "Loan Account Created", loanamt));
     }
 
-    
-    
     double getLoanAmount() {
-		return loanAmount;
-	}
+        return loanAmount;
+    }
 
+    void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
+    }
 
+    double getPaidAmount() {
+        return paidAmount;
+    }
 
-	void setLoanAmount(double loanAmount) {
-		this.loanAmount = loanAmount;
-	}
+    void setPaidAmount(double paidAmount) {
+        this.paidAmount = paidAmount;
+    }
 
+    int getPaymentsCount() {
+        return paymentsCount;
+    }
 
+    void setPaymentsCount(int paymentsCount) {
+        this.paymentsCount = paymentsCount;
+    }
 
-	double getPaidAmount() {
-		return paidAmount;
-	}
-
-
-
-	void setPaidAmount(double paidAmount) {
-		this.paidAmount = paidAmount;
-	}
-
-
-
-	int getPaymentsCount() {
-		return paymentsCount;
-	}
-
-
-
-	void setPaymentsCount(int paymentsCount) {
-		this.paymentsCount = paymentsCount;
-	}
-
-
-
-	// Withdrawals not allowed
+    // Withdrawals not allowed
     @Override
-    
     public void withdraw(double amount) {
         System.out.println("Cannot withdraw from loan account.");
     }
 
     // ------------------ Bank approves loan ------------------
-    
-    public boolean approveLoan(double requestedLoan, double interestRate)
-    {
+    public boolean approveLoan(double requestedLoan, double interestRate) {
         double maxLoanLimit = 50000;
         double minBalanceRequired = 10000;
 
@@ -83,26 +70,21 @@ public class Loan_Acc extends Account {
             return false;
         }
 
-        else 
-        {
-        	loanAmount =requestedLoan;
-	        this.interestRate = interestRate;   // Bank sets interest rate
-	        isApproved = true;
-	      
-        System.out.println("Loan of ₹" + requestedLoan + " approved at " + (interestRate * 100) + "% interest. Total loan: ₹" + loanAmount);
-        return true;
-        
+        else {
+            loanAmount = requestedLoan;
+            this.interestRate = interestRate;   // Bank sets interest rate
+            isApproved = true;
 
+            // ✅ record loan approval transaction
+            addTransaction(new Transaction(acc_no, "Loan Approved", requestedLoan));
+
+            System.out.println("Loan of ₹" + requestedLoan + " approved at " + (interestRate * 100) + "% interest. Total loan: ₹" + loanAmount);
+            return true;
         }
-
     }
 
     // ------------------ Pay loan ------------------
-    
-    
-    public void payLoan(double amount)
-    
-    {
+    public void payLoan(double amount) {
         if (!isApproved) {
             System.out.println("Loan is not approved yet. Cannot pay.");
             return;
@@ -118,11 +100,14 @@ public class Loan_Acc extends Account {
             return;
         }
 
-        balance =balance- amount;
+        balance = balance - amount;
         loanAmount -= amount;
         paidAmount += amount;
         paymentsCount++;
-      
+
+        // ✅ record loan payment transaction
+        addTransaction(new Transaction(acc_no, "Loan Payment", amount));
+
         System.out.println("Loan repayment of ₹" + amount + " done. Remaining loan: ₹" + loanAmount);
     }
 
@@ -145,8 +130,7 @@ public class Loan_Acc extends Account {
     }
 
     // ------------------ Show interest on remaining loan ------------------
-    public void showInterest()
-    {
+    public void showInterest() {
         if (!isApproved) {
             System.out.println("Loan is not approved yet.");
             return;
@@ -162,20 +146,15 @@ public class Loan_Acc extends Account {
 
     // ------------------ Display account details ------------------
     @Override
-    public void displayAccount()
-    {
+    public void displayAccount() {
         super.displayAccount();
         System.out.println("---- Loan Account Details ----");
-        if (isApproved) 
-        {
+        if (isApproved) {
             System.out.println("Remaining Loan Amount: ₹" + loanAmount);
             System.out.println("Total Paid Loan: ₹" + paidAmount);
             System.out.println("Interest Rate: " + (interestRate));
             System.out.println("Payments Made: " + paymentsCount);
-        } 
-        
-        else
-        {
+        } else {
             System.out.println("Loan is not approved yet.");
         }
     }

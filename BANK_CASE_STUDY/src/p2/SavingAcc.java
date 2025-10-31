@@ -20,6 +20,8 @@ public class SavingAcc extends Account {
         super(acc_no, holder_name, balance, ifsc);
         this.interestRate = interestRate;
        this.minBalance = minBalance;
+       
+       addTransaction(new Transaction(acc_no, "saving account", balance));
     }
 
     // Getters and Setters
@@ -55,23 +57,26 @@ public class SavingAcc extends Account {
     public void withdraw(double amount) {
         if (amount > 20000) 
         {
+        	 addTransaction(new Transaction(acc_no, "Withdraw", amount));
             System.out.println("Withdrawal limit exceeded! (Max ₹20000)");
             
         } 
         else if (balance - amount < minBalance) 
         {
+        	 addTransaction(new Transaction(acc_no, "Withdraw", amount));
             System.out.println("Cannot withdraw. Maintain minimum balance of ₹" + minBalance);
         } 
         else
         {
             balance =balance-amount;
+            addTransaction(new Transaction(acc_no, "saving account",amount));
             System.out.println("₹" + amount + " withdrawn successfully from Saving Account.");
             
-
         }
     }
 
     // Add interest method
+    
     public void calculateInterest() 
     {
         double interest = balance * interestRate;

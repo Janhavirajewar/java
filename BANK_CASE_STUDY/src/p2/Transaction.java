@@ -1,23 +1,29 @@
 package p2;
-
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
-    int id;
-    String name;
-    String type;     // Deposit / Withdraw / Interest / Loan Payment etc.
-    Date date;
-    double amount;
+    private String accountHolderName;
+    private String type;
+    private double amount;
+    private LocalDateTime dateTime;
 
-    Transaction(int id, String name, String type, double amount) {
-        this.id = id;
-        this.name = name;
+    // Constructor
+    public Transaction(String accountHolderName, String type, double amount) {
+        this.accountHolderName = accountHolderName;
         this.type = type;
         this.amount = amount;
-        this.date = new Date(); // current date & time
+        this.dateTime = LocalDateTime.now(); // capture current time
     }
 
-    public void display() {
-        System.out.println(id + " ID " + name + " Name " + type + " Name " + date + " Date " + amount+ "Amount");
+    // ✅ Single display method
+    public void displayTransacctions() {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        System.out.println("--------------------------------------");
+        System.out.println("Account Holder : " + accountHolderName);
+        System.out.println("Transaction Type : " + type);
+        System.out.println("Amount : Rs. " + amount);
+        System.out.println("Date & Time : " + dateTime.format(format));
+        System.out.println("--------------------------------------");
     }
 }
