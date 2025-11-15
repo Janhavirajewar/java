@@ -1,5 +1,7 @@
 package p2;
 
+import java.time.LocalDate;
+
 import p1.Account;
 
 public class Current_Acc extends Account {
@@ -26,6 +28,14 @@ public class Current_Acc extends Account {
 		this.overdraftlimit = overdraftlimit;
 	}
 
+	public void deposit(double amount)
+	{
+		 super.deposit(amount);
+		 addTransaction(new Transaction(acc_no, "Deposit", amount));
+		
+		
+	}
+	
 	@Override
 	public void withdraw(double amount)
 	{
@@ -35,7 +45,7 @@ public class Current_Acc extends Account {
 		        {
 		            balance=balance-amount;
 		            addTransaction(new Transaction(holder_name, "Withdraw (Current)", amount));
-		            System.out.println("₹" + amount + " withdrawn using overdraft.");
+		            System.out.println(" withdrawn using overdraft. :"+ amount);
 		            
 		        } else {
 		            System.out.println("Overdraft limit exceeded!");

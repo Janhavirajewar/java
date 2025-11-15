@@ -68,7 +68,7 @@ public abstract class Account {
     public void deposit(double amount) {
         this.balance += amount;
         addTransaction(new Transaction(acc_no, "Deposit", amount));
-        System.out.println("Deposited: " + amount);
+       // System.out.println("Deposited: " + amount);
     }
 
     // Abstract withdraw method (must be implemented by subclasses)
@@ -76,7 +76,8 @@ public abstract class Account {
 
     // Add transaction
     public void addTransaction(Transaction t) {
-        if (transCount < transactions.length) {
+        if (transCount < transactions.length)
+        {
             transactions[transCount++] = t;
         }
     }
@@ -96,10 +97,14 @@ public abstract class Account {
         System.out.println("\n---- Transactions for Account " + acc_no + " ----");
         if (transCount == 0) {
             System.out.println("No transactions yet.");
-            return;
+            return;	
         }
-        for (int i = 0; i < transCount; i++) {
-            transactions[i].displayTransacctions();
+        
+        else
+        {	
+	        for (int i = 0; i < transCount; i++) {
+	            transactions[i].displayTransacctions();
+	        }
         }
     }
 }

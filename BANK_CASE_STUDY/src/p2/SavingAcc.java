@@ -45,8 +45,7 @@ public class SavingAcc extends Account {
     public void deposit(double amount)
     {
     	super.deposit(amount);
-    	System.out.println("deposit successfully");
-    	
+    	System.out.println("Deposit Successffully :"+amount);
     }
     
 
@@ -70,7 +69,7 @@ public class SavingAcc extends Account {
         {
             balance =balance-amount;
             addTransaction(new Transaction(acc_no, "saving account",amount));
-            System.out.println("₹" + amount + " withdrawn successfully from Saving Account.");
+            System.out.println("withdrawn successfully from Saving Account."+"" + amount );
             
         }
     }

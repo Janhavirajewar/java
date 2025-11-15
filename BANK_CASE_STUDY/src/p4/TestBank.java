@@ -8,157 +8,303 @@ import p2.Current_Acc;
 import p2.Salary_Acc;
 import p2.Loan_Acc;
 
-public class TestBank
-{
+public class TestBank {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Bank bank  = new Bank(); // Preloaded with some demo accounts
-        int exit;
-        int choice;
+        Bank bank = new Bank(); // uses your array-based implementation
+
+        int mainChoice;
         System.out.println("\n......WELCOME BANK MANAGEMENT SYSTEM.......\n");
+
         do {
-            System.out.println("===== BANK MENU ======");
-            System.out.println("1. Add Account");
-            System.out.println("2. Display All Accounts");
-            System.out.println("3. Search Account by Number");
-            System.out.println("4. Search Account by Name");
-            System.out.println("5. Deposit");
-            System.out.println("6. Withdraw");
-            System.out.println("7. Update Account Balance");
-            System.out.println("8. dailyreport");
-            System.out.println("9. Exit \n");
-            System.out.print("Enter your choice: ");
-            choice = sc.nextInt();
-           
-            sc.nextLine(); // clear buffer
-          
-            switch (choice) {
+            System.out.println("===== BANK EMPLOYEE MAIN MENU =====\n");
+            System.out.println("1. Over the Counter Activities");
+            System.out.println("2. Show All Transactions (Employee Only)");
+            System.out.println("3. Display All Accounts Details");
+            System.out.println("4. Exit");
+            System.out.print("\nEnter your choice: ");
+            mainChoice = sc.nextInt();
+            sc.nextLine();
 
+            switch (mainChoice) {
+
+                // ========== 1. Over the Counter ==========
                 case 1:
-                    System.out.println("\nSelect Account Type:");
-                    System.out.println("1. Saving");
-                    System.out.println("2. Current");
-                    System.out.println("3. Salary");
-                    System.out.println("4. Loan \n");
-                    System.out.print("Enter type: ");
-                    
-                    int type = sc.nextInt();
-                    sc.nextLine(); // clear buffer
+                    int subChoice1;
+                    do {
+                        System.out.println("\n--- Over the Counter Activities ---");
+                        System.out.println("1. Existing User");
+                        System.out.println("2. New User Account Opening");
+                        System.out.println("3. Close Existing Account");
+                        System.out.println("4. Update Account");
+                        System.out.println("5. Return to Main Menu");
+                        System.out.print("\nEnter your choice: ");
+                        subChoice1 = sc.nextInt();
+                        sc.nextLine();
 
-                    System.out.print("\n Enter Account Number: ");
-                    String accNo = sc.nextLine();
+                        switch (subChoice1) {
 
-                    System.out.print("\n Enter Holder Name: ");
-                    String name = sc.nextLine();
+                            // ========== Existing User ==========
+                            case 1:
+                                System.out.print("\nEnter Account Number: ");
+                                String accNo = sc.nextLine();
+                                Account acc = bank.searchByAccNo(accNo);
 
-                    System.out.print("\n Enter Opening Balance: ");
-                    double bal = sc.nextDouble();
-                    sc.nextLine();
+                                if (acc == null) {
+                                    System.out.println("❌ Account not found!\n");
+                                    break;
+                                }
+                                System.out.println("\nAccount Exists !!!");
 
+                                if (acc instanceof SavingAcc) {
+                                    int choice;
+                                    do {
+                                        System.out.println("\n--- Saving Account Menu ---");
+                                        System.out.println("1. Deposit");
+                                        System.out.println("2. Withdraw");
+                                        System.out.println("3. Check Balance");
+                                        System.out.println("4. Return");
+                                        System.out.print("\nEnter your choice: ");
+                                        choice = sc.nextInt();
 
-                    switch (type)
-                    {
-                        case 1:
-                            System.out.print("\n Enter Interest Rate: ");
-                            double rate = sc.nextDouble();
-                            System.out.print("\n Enter Minimum Balance: ");
-                            double minBal = sc.nextDouble();
-                             bank.addAccount(new SavingAcc(accNo, name, bal, "IFSC100", rate, minBal));
-                            break;
+                                        switch (choice) {
+                                            case 1:
+                                                System.out.print("Enter deposit amount: ");
+                                                double dep = sc.nextDouble();
+                                                bank.deposit(accNo, dep);
+                                               // System.out.println("Deposit successfully");
+                                                break;
 
-                        case 2:
-                            System.out.print("\n Enter Overdraft Limit: ");
-                            double od = sc.nextDouble();
-                            bank.addAccount(new Current_Acc(accNo, name, bal, "IFSC200", od));
-                            break;
+                                            case 2:
+                                                System.out.print("Enter withdrawal amount: ");
+                                                double w = sc.nextDouble();
+                                                bank.withdraw(accNo, w);
+                                                break;
 
-                        case 3:
-                            bank.addAccount(new Salary_Acc(accNo, name, bal, "IFSC300"));
-                            break;
+                                            case 3:
+                                                System.out.println("\nCurrent Balance: " + acc.getBalance());
+                                                break;
 
-                        case 4:
-                            System.out.print("\n Enter Loan Amount: ");
-                            double loanAmt = sc.nextDouble();
-                            System.out.print("Enter Interest Rate: ");
-                            double loanRate = sc.nextDouble();
-       
-                            bank.addAccount(new Loan_Acc(accNo, name,bal,"IFSC400", loanAmt, loanRate));
-                            break;
-                        default:
-                            System.out.println("Invalid account type!");
-                    }
+                                            case 4:
+                                                break;
+
+                                            default:
+                                                System.out.println("Invalid choice!");
+                                        }
+                                    } while (choice != 4);
+
+                                } else if (acc instanceof Current_Acc) {
+                                    Current_Acc ca = (Current_Acc) acc;
+                                    int choice;
+                                    do {
+                                        System.out.println("\n--- Current Account Menu ---");
+                                        System.out.println("1. Deposit");
+                                        System.out.println("2. Withdraw");
+                                        System.out.println("3. Check Balance");
+                                        System.out.println("4. Return");
+                                        System.out.print("\nEnter your choice: ");
+                                        choice = sc.nextInt();
+
+                                        switch (choice) {
+                                            case 1:
+                                                System.out.print("Enter deposit amount: ");
+                                                double dep = sc.nextDouble();
+                                                bank.deposit(accNo, dep);
+                                                break;
+
+                                            case 2:
+                                                System.out.print("Enter withdrawal amount: ");
+                                                double w = sc.nextDouble();
+                                                bank.withdraw(accNo, w);
+                                                break;
+
+                                            case 3:
+                                                System.out.println("\nCurrent Balance: " + ca.getBalance());
+                                                break;
+
+                                            case 4:
+                                                break;
+
+                                            default:
+                                                System.out.println("Invalid choice!");
+                                        }
+                                    } while (choice != 4);
+
+                                }
+                                else if (acc instanceof Salary_Acc) {
+                                    Salary_Acc sa = (Salary_Acc) acc;
+                                    int choice;
+                                    do {
+                                        System.out.println("\n--- Salary Account Menu ---");
+                                        System.out.println("1. Deposit");
+                                        System.out.println("2. Withdraw");
+                                        System.out.println("3. Check Balance");
+                                        System.out.println("4. Return");
+                                        System.out.print("\nEnter your choice: ");
+                                        choice = sc.nextInt();
+
+                                        switch (choice) {
+                                            case 1:
+                                                System.out.print("Enter deposit amount: ");
+                                                double dep = sc.nextDouble();
+                                                bank.deposit(accNo, dep);
+                                                break;
+
+                                            case 2:
+                                                System.out.print("Enter withdrawal amount: ");
+                                                double w = sc.nextDouble();
+                                                bank.withdraw(accNo, w);
+                                                break;
+
+                                            case 3:
+                                                System.out.println("\nCurrent Balance: " + sa.getBalance());
+                                                break;
+
+                                            case 4:
+                                                break;
+
+                                            default:
+                                                System.out.println("Invalid choice!");
+                                        }
+                                    } while (choice != 4);
+
+                                } else if (acc instanceof Loan_Acc) {
+                                    Loan_Acc la = (Loan_Acc) acc;
+                                    int choice;
+                                    do {
+                                        System.out.println("\n--- Loan Account Menu ---");
+                                        System.out.println("1. Deposit Loan Payment");
+                                        System.out.println("2. Check Outstanding");
+                                        System.out.println("3. Return");
+                                        System.out.print("\nEnter your choice: ");
+                                        choice = sc.nextInt();
+
+                                        switch (choice) {
+                                            case 1:
+                                                System.out.print("Enter repayment amount: ");
+                                                double rep = sc.nextDouble();
+                                                bank.deposit(accNo, rep);
+                                                break;
+
+                                            case 2:
+                                                System.out.println("\nOutstanding Amount: " + la.getBalance());
+                                                break;
+
+                                            case 3:
+                                                break;
+
+                                            default:
+                                                System.out.println("Invalid choice!");
+                                        }
+                                    } while (choice != 3);
+                                }
+                                break;
+
+                            // ========== New Account Opening ==========
+                            case 2:
+                                System.out.println("\nSelect Account Type:");
+                                System.out.println("1. Saving");
+                                System.out.println("2. Current");
+                                System.out.println("3. Salary");
+                                System.out.println("4. Loan");
+                                System.out.print("\nEnter type: ");
+                                int type = sc.nextInt();
+                                sc.nextLine();
+
+                                System.out.print("Enter Account Number: ");
+                                String newNo = sc.nextLine();
+
+                                System.out.print("Enter Holder Name: ");
+                                String name = sc.nextLine();
+
+                                System.out.print("Enter Opening Balance: ");
+                                double bal = sc.nextDouble();
+
+                                switch (type) {
+                                    case 1:
+                                        System.out.print("Enter Interest Rate: ");
+                                        double rate = sc.nextDouble();
+                                        System.out.print("Enter Min Balance: ");
+                                        double minBal = sc.nextDouble();
+                                        bank.add(new SavingAcc(newNo, name, bal, "IFSC100", rate, minBal));
+                                        break;
+
+                                    case 2:
+                                        System.out.print("Enter Overdraft Limit: ");
+                                        double od = sc.nextDouble();
+                                        bank.add(new Current_Acc(newNo, name, bal, "IFSC200", od));
+                                        break;
+
+                                    case 3:
+                                        bank.add(new Salary_Acc(newNo, name, bal, "IFSC300"));
+                                        break;
+
+                                    case 4:
+                                        System.out.print("Enter Loan Amount: ");
+                                        double loanAmt = sc.nextDouble();
+                                        System.out.print("Enter Interest Rate: ");
+                                        double loanRate = sc.nextDouble();
+                                        bank.add(new Loan_Acc(newNo, name, bal, "IFSC400", loanAmt, loanRate));
+                                        break;
+
+                                    default:
+                                        System.out.println("Invalid account type!");
+                                }
+                                break;
+
+                            // ========== Close Account ==========
+                            case 3:
+                                System.out.print("Enter Account Number to close: ");
+                                String closeNo = sc.nextLine();
+                                bank.remove(closeNo);
+                                break;
+
+                            case 4:
+                            {
+                            	System.out.print("Enter Account Number to Update: ");
+                            	String accno = sc.nextLine();
+
+                            	System.out.print("Enter New Balance: ");
+                            	double newBal = sc.nextDouble();
+
+                            	// Call updateAccount() from Bank class
+                            	bank.updateAccount(accno, newBal);
+
+                            }
+                                
+                            case 5:
+                                break;
+
+                            default:
+                                System.out.println("Invalid choice!");
+                        }
+
+                    } while (subChoice1 != 5);
                     break;
-                   
+
+                // ========== 2. Show All Transactions ==========
                 case 2:
+                    bank.generateDailyReport();
+                    break;
+
+                // ========== 3. Display All Accounts ==========
+                case 3:
                     bank.displayAll();
                     break;
 
-                case 3:
-                    System.out.print("\n Enter Account Number to Search: ");
-                    String sAcc = sc.nextLine();
-                    Account foundAcc = bank.searchByAccNo(sAcc);
-                    if (foundAcc != null)
-                        foundAcc.displayAccount();
-                    else
-                        System.out.println("Account not found!");
-                    break;
-
+                // ========== 4. Exit ==========
                 case 4:
-                    System.out.print("\n Enter Account Holder Name to Search: ");
-                    String sName = sc.nextLine();
-                    Account foundName = bank.searchByName(sName);
-                    if (foundName != null)
-                        foundName.displayAccount();
-                    else
-                        System.out.println("Account not found!");
+                	System.out.println();
+                    System.out.println("Exiting Bank Management System. Goodbye!!!!");
                     break;
 
-                case 5:
-                    System.out.print("\n Enter Account Number: ");
-                    String depNo = sc.nextLine();
-                    System.out.print("\n Enter Deposit Amount: ");
-                    double depAmt = sc.nextDouble();
-                    bank.deposit(depNo, depAmt);
-                    break;
-
-                case 6:
-                    System.out.print("\n Enter Account Number: ");
-                    String wNo = sc.nextLine();
-                    System.out.print("\n Enter Withdrawal Amount: ");
-                    double wAmt = sc.nextDouble();
-                    sc.nextLine();
-                    bank.withdraw(wNo, wAmt);
-                    break;
-
-                case 7:
-                    System.out.print("\n Enter Account Number to Update: ");
-                    String upNo = sc.nextLine();
-                    System.out.print("\n Enter New Balance: ");
-                    double newBal = sc.nextDouble();
-                    bank.updateAccount(upNo, newBal);
-                    break;
-
-                case 8:
-                    bank.generateDailyReport();
-                    break;
-                    
-                case 9:
-                    System.out.println("Exiting... Thank you!");
-                    break;
-
-                
                 default:
-                    System.out.println("Invalid choice! Try again.");
-                  
+                    System.out.println("Invalid choice!");
             }
-            
-            System.out.println("\n Do you want to continue press 1 to yes 0 to no");
-            exit=sc.nextInt();
 
-        } while (exit==1);
-        if(exit!=1)
-        System.out.println("\n program is closed .. !! ");
+        } while (mainChoice != 4);
+
         sc.close();
     }
 }

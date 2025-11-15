@@ -17,6 +17,7 @@ public class Salary_Acc extends Account{
 	 public void deposit(double amount)
 	 {
 		 super.deposit(amount);
+		 System.out.println(amount+"Deposit Successffully");
 		 last_transactiondate = LocalDate.now();
 	 }
 	 
@@ -33,7 +34,7 @@ public class Salary_Acc extends Account{
 	        {
 	            balance -= amount;
 	            last_transactiondate= LocalDate.now();
-	            System.out.println("₹" + amount + " withdrawn from Salary Account.");
+	            System.out.println(" withdrawn from Salary Account. :"+ amount);
 	        }
 	        
 	    }
